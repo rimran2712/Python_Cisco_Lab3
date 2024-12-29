@@ -1,0 +1,160 @@
+---
+
+vIOS1:
+    hostname: 172.16.100.2
+    username: imran
+    password: Cisco123*
+    groups:
+        - cisco_group
+    data:
+        interfaces:
+            - name: lo0
+              ip: 1.1.1.1
+              mask: 255.255.255.255
+              switchport: False
+            - name: Gi0/1
+              ip: 10.1.2.1
+              mask: 255.255.255.0
+              switchport: True
+            - name: Gi0/2
+              ip: 10.1.4.1
+              mask: 255.255.255.0
+              switchport: True
+        bgp:
+            localAsn: 65001
+            routerId: 1.1.1.1
+            neighbors:
+                - address: 3.3.3.3
+                  type: "eBGP"
+                  remoteAsn: 65003 
+                - address: 4.4.4.4
+                  type: "eBGP"
+                  remoteAsn: 65004
+        ospf:
+            rid: 1.1.1.1
+            proc_id: 127
+            networks:
+                - net: 1.1.1.1
+                  wildcard: 0.0.0.0
+                  area: 0
+                - net: 10.1.2.0
+                  wildcard: 0.0.0.255
+                  area: 0
+                - net: 10.1.4.0
+                  wildcard: 0.0.0.255
+                  area: 0     
+vEOS1:
+    hostname: 172.16.100.6
+    username: imran
+    password: Cisco123*
+    groups:
+        - arista_group
+    data:
+        interfaces:
+            - name: lo0
+              ip: 2.2.2.2
+              mask: 255.255.255.255
+              switchport: False
+            - name: Et1
+              ip: 10.1.2.2
+              mask: 255.255.255.0
+              switchport: True
+            - name: Et2
+              ip: 10.2.3.2
+              mask: 255.255.255.0
+              switchport: True
+        ospf:
+            rid: 2.2.2.2
+            proc_id: 127
+            networks:
+                - net: 2.2.2.2
+                  wildcard: 0.0.0.0
+                  area: 0
+                - net: 10.1.2.0
+                  wildcard: 0.0.0.255
+                  area: 0
+                - net: 10.2.3.0
+                  wildcard: 0.0.0.255
+                  area: 0
+        bgp:
+            localAsn: 65001
+            routerId: 2.2.2.2
+            neighbors:
+                - address: 3.3.3.3
+                  type: "eBGP"
+                  remoteAsn: 65003 
+                - address: 4.4.4.4
+                  type: "eBGP"
+                  remoteAsn: 65004
+
+vMX-R1:
+    hostname: 172.16.100.10
+    #username: root
+    #password: Juniper
+    username: imran
+    password: Cisco123*
+    groups:
+        - juniper_group
+    data:
+        interfaces:
+            - name: lo0
+              ip: 3.3.3.3
+              mask: 32
+              ospf_area: 0
+            - name: ge-0/0/0
+              ip: 10.3.4.3
+              mask: 24
+              ospf_area: 0
+            - name: ge-0/0/1
+              ip: 10.2.3.3
+              mask: 24
+              ospf_area: 0
+        bgp:
+            localAsn: 65001
+            routerId: 3.3.3.3
+            neighbors:
+                - address: 1.1.1.1
+                  type: "eBGP"
+                  remoteAsn: 65001 
+                - address: 2.2.2.2
+                  type: "eBGP"
+                  remoteAsn: 65002
+        ospf:
+            rid: 3.3.3.3
+
+vN9K-SW1:
+    hostname: 172.16.100.14
+    username: imran
+    password: Cisco123*
+    groups:
+        - nexus_group
+    data:
+        interfaces:
+            - name: lo0
+              ip: 4.4.4.4
+              mask: 255.255.255.255
+              switchport: False
+              ospf_area: 0
+            - name: Eth1/1
+              ip: 10.3.4.4
+              mask: 255.255.255.0
+              switchport: True
+              ospf_area: 0
+            - name: Eth1/2
+              ip: 10.1.4.4
+              mask: 255.255.255.0
+              switchport: True
+              ospf_area: 0
+        ospf:
+            rid: 4.4.4.4
+            proc_id: 127
+        bgp:
+            localAsn: 65001
+            routerId: 4.4.4.4
+            neighbors:
+                - address: 1.1.1.1
+                  type: "eBGP"
+                  remoteAsn: 65001 
+                - address: 2.2.2.2
+                  type: "eBGP"
+                  remoteAsn: 65002

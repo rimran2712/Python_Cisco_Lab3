@@ -1,0 +1,49 @@
+---
+
+vIOS-R1:
+    hostname: 172.16.100.2
+    groups:
+        - cisco_group
+        - north
+
+vIOS-R2:
+    hostname: 172.16.100.6
+    groups:
+         - cisco_group
+         - north
+
+vIOS-R3:
+    hostname: 172.16.100.10
+    groups:
+        - cisco_group
+        - north
+ 
+vIOS-R4:
+    hostname: 172.16.100.14
+    groups:
+        - cisco_group
+        - north
+
+vIOS-R5:
+    hostname: 172.16.100.18
+    groups:
+        - cisco_group
+        - south
+
+vIOS-R6:
+    hostname: 172.16.100.22
+    groups:
+        - cisco_group
+        - south
+    
+vIOS-R7:
+    hostname: 172.16.100.26
+    groups:
+        - cisco_group
+        - south
+        
+vIOS-R8:
+    hostname: 172.16.100.30
+    groups:
+        - cisco_group
+        - south   

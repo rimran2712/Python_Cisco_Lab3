@@ -1,0 +1,14 @@
+---
+data:
+    nameservers:
+        - 8.8.8.8
+        - 8.8.4.4
+    snmp:
+        snmp_community: "WORDTECH"
+        snmp_location: "Dallas"
+        snmp_contact: "rimran84@gmail.com"
+        snmp_server: "172.16.2.3"
+    ntp:
+        timezone: "GMT -6"
+        timezone_cc: "US/Central"
+        ntp_server: "time.google.com"

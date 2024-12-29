@@ -1,0 +1,9 @@
+interface lo0
+ip address 1.1.1.1 255.255.255.255 
+no shut
+interface Gi0/1
+ip address 10.1.5.1 255.255.255.0 
+no shut
+interface Gi0/2
+ip address 10.1.6.1 255.255.255.0 
+no shut

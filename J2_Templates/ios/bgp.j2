@@ -1,0 +1,20 @@
+{# BGP Configiguration Template for IOS Devices#}
+
+ip routing
+router bgp {{ host.dev_vars.bgp.localAsn }}
+bgp router-id {{ host.dev_vars.bgp.routerId }}
+{% if host.dev_vars.bgp.route_reflector %}
+neighbor {{ host.dev_vars.bgp.peer_group_name }} peer-group
+neighbor {{ host.dev_vars.bgp.peer_group_name }} remote-as {{ host.dev_vars.bgp.localAsn }}
+neighbor {{ host.dev_vars.bgp.peer_group_name }} update-source {{ host.dev_vars.bgp.update_source }}
+neighbor {{ host.dev_vars.bgp.peer_group_name }} route-reflector-client
+{% for nbr in host.dev_vars.bgp.neighbors %}
+neighbor {{ nbr }} peer-group {{ host.dev_vars.bgp.peer_group_name }}
+{% endfor %}
+{% endif %}
+{% if host.dev_vars.bgp.route_reflector == False %}
+{% for nbr in host.dev_vars.bgp.neighbors %}
+neighbor {{ nbr }} remote-as {{ host.dev_vars.bgp.localAsn }}
+neighbor {{ nbr }} update-source {{ host.dev_vars.bgp.update_source }}
+{% endfor %}
+{% endif %}

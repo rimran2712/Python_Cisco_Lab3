@@ -1,0 +1,13 @@
+---
+
+inventory:
+    plugin: SimpleInventory
+    options:
+        host_file: "Cisco_Inventory/hosts.yaml"
+        group_file: "Cisco_Inventory/groups.yaml"
+        defaults_file: "Cisco_Inventory/defaults.yaml"
+
+runner:
+    plugin: threaded
+    options:
+        num_workers: 1

@@ -1,0 +1,13 @@
+---
+
+inventory:
+    plugin: SimpleInventory
+    options:
+        host_file: "/home/imran/Documents/Automation/Nornir/Runbooks_Repositories/MultiVendor_Jinja2_Templates/Inventory/hosts.yaml"
+        group_file: "/home/imran/Documents/Automation/Nornir/Runbooks_Repositories/MultiVendor_Jinja2_Templates/Inventory/groups.yaml"
+        defaults_file: "/home/imran/Documents/Automation/Nornir/Runbooks_Repositories/MultiVendor_Jinja2_Templates/Inventory/defaults.yaml"
+
+runner:
+    plugin: threaded
+    options:
+        num_workers: 10

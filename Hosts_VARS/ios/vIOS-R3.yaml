@@ -1,0 +1,39 @@
+---
+
+interfaces:
+    - name: "lo0"
+      ip: 3.3.3.3
+      mask: 255.255.255.255
+    - name: "Gi0/1"
+      ip: 10.3.6.3
+      mask: 255.255.255.0
+    - name: "Gi0/2"
+      ip: 10.3.8.3
+      mask: 255.255.255.0
+
+bgp:
+    localAsn: 65001
+    routerId: 3.3.3.3
+    update_source: loopback0
+    route_reflector: True
+    peer_group_name: "MyPeers"
+    neighbors:
+        - 1.1.1.1
+        - 4.4.4.4
+        - 5.5.5.5
+        - 6.6.6.6
+        - 7.7.7.7
+        - 8.8.8.8
+ospf:
+    rid: 3.3.3.3
+    proc_id: 127
+    networks:
+        - net: 3.3.3.3
+          wildcard: 0.0.0.0
+          area: 0
+        - net: 10.3.6.0
+          wildcard: 0.0.0.255
+          area: 0
+        - net: 10.3.8.0
+          wildcard: 0.0.0.255
+          area: 0

@@ -1,0 +1,34 @@
+---
+
+interfaces:
+    - name: "lo0"
+      ip: 5.5.5.5
+      mask: 255.255.255.255
+    - name: "Gi0/1"
+      ip: 10.1.5.5
+      mask: 255.255.255.0
+    - name: "Gi0/2"
+      ip: 10.2.5.5
+      mask: 255.255.255.0
+
+bgp:
+    localAsn: 65001
+    routerId: 5.5.5.5
+    update_source: loopback0
+    route_reflector: False
+    neighbors:
+        - 2.2.2.2
+        - 3.3.3.3
+ospf:
+    rid: 5.5.5.5
+    proc_id: 127
+    networks:
+        - net: 5.5.5.5
+          wildcard: 0.0.0.0
+          area: 0
+        - net: 10.1.5.0
+          wildcard: 0.0.0.255
+          area: 0
+        - net: 10.2.5.0
+          wildcard: 0.0.0.255
+          area: 0

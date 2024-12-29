@@ -1,0 +1,26 @@
+---
+
+cisco_group:
+    platform: "ios"
+    connection_options:
+        netmiko:
+            extras:
+                global_delay_factor: 4
+        napalm:
+            extras:
+                optional_args:
+                    global_delay_factor: 4   
+arista_group:
+    platform: "eos"
+    
+juniper_group:
+    platform: "junos"
+
+nexus_group:
+    #platform: "nxos"
+    platform: "nxos_ssh"
+
+north: {}
+    
+
+south: {}

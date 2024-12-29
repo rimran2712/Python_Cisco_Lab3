@@ -1,0 +1,47 @@
+---
+
+interfaces:
+    - name: "lo0"
+      ip: 4.4.4.4
+      mask: 255.255.255.255
+    - name: "Gi0/1"
+      ip: 10.4.8.4
+      mask: 255.255.255.0
+    - name: "Gi0/2"
+      ip: 10.4.7.4
+      mask: 255.255.255.0
+
+bgp:
+    localAsn: 65001
+    routerId: 4.4.4.4
+    update_source: loopback0
+    route_reflector: False
+    neighbors:
+        - 2.2.2.2
+        - 3.3.3.3
+
+ospf:
+    rid: 4.4.4.4
+    proc_id: 127
+    networks:
+        - net: 4.4.4.4
+          wildcard: 0.0.0.0
+          area: 0
+        - net: 10.4.7.0
+          wildcard: 0.0.0.255
+          area: 0
+        - net: 10.4.8.0
+          wildcard: 0.0.0.255
+          area: 0
+
+# Sample BGP
+#bgp:
+#   localAsn: 65001
+#   routerId: 1.1.1.1
+#   neighbors:
+#       - address: 3.3.3.3
+#         type: "eBGP"
+#         remoteAsn: 65003 
+#       - address: 4.4.4.4
+#         type: "eBGP"
+#         remoteAsn: 65004
